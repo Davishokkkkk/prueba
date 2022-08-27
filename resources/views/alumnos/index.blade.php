@@ -31,6 +31,12 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
+				<td>
+					<a href="{{url('/alumnos/'.$a->$id.'/edit' )}}">
+						<input type="submit" class="btn btn-warning" value="Editar">
+					</a>
+				</td>
+
 			 <td><input type="button" class="btn btn-warning" value="Editar"></td>
             <td>
                 <form method="POST" action="{{ url("alumnos/{$a->id}") }}">

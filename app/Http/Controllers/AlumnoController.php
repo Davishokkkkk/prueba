@@ -62,7 +62,7 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        //
+        return view ('alumnos.edit');
     }
 
     /**
@@ -72,9 +72,10 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alumno $alumno)
+    public function update($id)
     {
-        //
+        $alumnos=Alumno::findorFail($id);
+        return view ('alumnos.edit', compact('alumnos'));
     }
 
     /**
