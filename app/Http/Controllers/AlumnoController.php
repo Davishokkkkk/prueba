@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Alumno;
+use DB;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
@@ -14,8 +14,10 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::all();
-        return view('Alumno.index', compact('alumnos'));
+       $alumnos = Alumno::paginate(4);
+       return view('alumnos.index',compact(
+        'alumnos'));  
+    
     }
 
     /**
@@ -25,7 +27,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        //
+        return view('alumnos.create');
     }
 
     /**
@@ -36,13 +38,15 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alumnos= request()->except('_token');
+        Alumno::insert($alumnos);
+        return redirect (route('alumnos.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Alumno  $alumno
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
     public function show(Alumno $alumno)
@@ -53,7 +57,7 @@ class AlumnoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Alumno  $alumno
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
     public function edit(Alumno $alumno)
@@ -65,7 +69,7 @@ class AlumnoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Alumno  $alumno
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Alumno $alumno)
@@ -76,11 +80,12 @@ class AlumnoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Alumno  $alumno
+     * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alumno $alumno)
+    public function destroy($id)
     {
-        //
+        Alumno::destroy($id);
+        return redirect('alumnos');
     }
 }
