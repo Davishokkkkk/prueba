@@ -34,7 +34,7 @@
 	<br>
     <input type="submit" class="btn btn-primary" value="Guardar">
     <a class="pull-right" href="{{route('alumnos.index')}} "><button type="button" class="btn btn-danger">Cancelar</button></a>
-		
+		<!--soy un cacahuate-->
 	</form>
 </div>
 </div>

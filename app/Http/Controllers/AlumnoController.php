@@ -80,6 +80,7 @@ class AlumnoController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * 
      *
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
