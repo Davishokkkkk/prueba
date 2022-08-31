@@ -1,7 +1,7 @@
-<link rel="stylesheet" type="text/css" href="{{asset('css/estilos.css')}}">
+@include('app');
 <div class="container">
-	<div class="jumbotron"
-    <div class="form-row align-items-center">
+	<div class="jumbotron">
+   <div class="form-row align-items-center">
     <div class="form-group col-md-12">
 	<h1>Crear alumno</h1>
 	<form action="{{url('/alumnos')}}" method="post" enctype="multipart/from-data">

@@ -60,9 +60,10 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alumno $alumno)
+    public function edit($id)
     {
-        return view ('alumnos.edit');
+        $alumnos=Alumno::findorFail($id);
+        return view ('alumnos.edit', compact('alumnos'));
     }
 
     /**
@@ -74,8 +75,9 @@ class AlumnoController extends Controller
      */
     public function update($id)
     {
-        $alumnos=Alumno::findorFail($id);
-        return view ('alumnos.edit', compact('alumnos'));
+        $alumnos=request()->except(['_token','_method']);
+        Alumno::where('id','=',$id)->update($alumnos);
+        return redirect ('alumnos');
     }
 
     /**
