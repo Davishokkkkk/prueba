@@ -1,8 +1,10 @@
 @include('app');
 <div class="container">
+	@include('flash::message')
 	<h1>Lista de Alumnos</h1>
 	<a class="d-flex justify-content-end" href="{{route('alumnos.create')}} "><button type="button" class="btn btn-primary">Nuevo</button></a>
-<div class="table-responsive-sm">
+	<div class="">
+	<div class="table-responsive-sm">
 	<table class="table table-hover" id="tabla">
 		<thead>
 			<tr>
@@ -15,7 +17,7 @@
 				<th>Gmail</th>
 				<th>Profesion</th>
 				<th>Genero</th>
-					<th>Fecha de nacimineto</th>				
+				<th>Fecha de nacimineto</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -45,6 +47,8 @@
 			      <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')" value="Borrar">
 			    </form>
                 </td>
+				<th>
+					<a href="{{route('alummos.show', $a->id)}}}">
             </tr>
 			@endforeach
 		</tbody>

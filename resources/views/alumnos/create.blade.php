@@ -1,4 +1,16 @@
 @include('app');
+@if (count($errors)>0)
+<div class="alert alert-danger" roles="alert">
+	<u>
+		@foreach ($errors->all() as $errors)
+		<li>
+			{($error)}
+		</li>
+
+	</u>
+	@endforeach
+</div>
+@endif
 <div class="container">
 	<div class="jumbotron">
    <div class="form-row align-items-center">

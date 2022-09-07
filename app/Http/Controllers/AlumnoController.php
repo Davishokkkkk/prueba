@@ -38,6 +38,24 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        $rules =[
+            'nombre' =>'required',
+            'apellido' =>'required',
+            'edad' =>'required',
+            'ci' =>'required',
+            'telefono' =>'required',
+            'direccion' =>'required',
+            'gmail' =>'required|unique:alumno,gmail',
+            'profesion' =>'required',
+            'genero' =>'required',
+            'fechanac' =>'required'
+        ];
+            $mensaje =[
+                'required' =>'El atributo es requerido',
+                'nombre.require' =>'El nombre es requerido',
+            ];
+
+        $this->validate($required,$rules,$mensaje);
         $alumnos= request()->except('_token');
         Alumno::insert($alumnos);
         return redirect (route('alumnos.index'));
@@ -49,9 +67,10 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function show(Alumno $alumno)
+    public function show($id)
     {
-        //
+        $alumnos=Alumno::findorFail($id);
+        return view ('alumnos.show', compact('alumnos'));
     }
 
     /**
