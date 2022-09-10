@@ -20,8 +20,6 @@ class Alumno extends Model
         'profesion',
         'genero',
         'fechanac'
-
-
     ];
 
 }

@@ -1,17 +1,17 @@
 @include('app');
-@if (count($errors)>0)
-<div class="alert alert-danger" roles="alert">
+	@if (count($errors)>0)
+<div class="alert alert-danger" role="aler">
 	<u>
-		@foreach ($errors->all() as $errors)
+		@foreach ($errors->all() as $error)
 		<li>
-			{($error)}
+			{{$error}}
 		</li>
-
+		@endforeach
 	</u>
-	@endforeach
-</div>
 @endif
+</div></div>
 <div class="container">
+
 	<div class="jumbotron">
    <div class="form-row align-items-center">
     <div class="form-group col-md-12">

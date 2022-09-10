@@ -26,11 +26,6 @@ protected $model = Alumno::class;
             'profesion' => $this->faker->sentence(),
             'genero' => $this->faker->sentence(),
             'fechanac' => $this->faker->sentence(),
-         
-
-
-
-
         ];
     }
 }

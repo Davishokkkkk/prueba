@@ -1,10 +1,20 @@
 @include('app');
+@include('menu');
 <div class="container">
-	@include('flash::message')
+@if (flash()->message)
+    <div class="{{ flash()->class }}">
+        {{ flash()->message }}
+    </div>
+@endif
+
 	<h1>Lista de Alumnos</h1>
-	<a class="d-flex justify-content-end" href="{{route('alumnos.create')}} "><button type="button" class="btn btn-primary">Nuevo</button></a>
-	<div class="">
-	<div class="table-responsive-sm">
+	<a class="btn pull-righ" href="{{route('alumnos.create')}} "><button type="button" class="btn btn-primary">Nuevo</button></a>
+		<form class="form-inline my-2 my-lg-0 float-right">
+              <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+              <button class="btn btn-success" type="submit">Buscar</button>
+              </form>
+              <br>
+<div class="table-responsive-sm">
 	<table class="table table-hover" id="tabla">
 		<thead>
 			<tr>
@@ -17,7 +27,8 @@
 				<th>Gmail</th>
 				<th>Profesion</th>
 				<th>Genero</th>
-				<th>Fecha de nacimineto</th>				
+				<th>Fecha de nacimineto</th>
+				<th>Opciones</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -33,29 +44,27 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
-				<
 			 <td>
+			 	<div class="btn-group">
 			 	<a href="{{url('/alumnos/'.$a->id.'/edit')}}">
 			 	<input type="submit"  class="btn btn-warning" value="Editar">
 			 	</a>
-
-			 </td>
-            <td>
                 <form method="POST" action="{{ url("alumnos/{$a->id}") }}">
 			      @csrf
 			      @method('DELETE')
 			      <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')" value="Borrar">
 			    </form>
+                
+                	<a href="{{route('alumnos.show', $a->id )}}"><input type="submit" class="btn btn-info" value="Ver"> </a>
+                </div>
                 </td>
-				<th>
-					<a href="{{route('alummos.show', $a->id)}}}">
             </tr>
 			@endforeach
 		</tbody>
 	</table>
-    <div class="d-flex justify-content-end">
+	<div class="d-flex justify-content-end">
     {{ $alumnos->links() }}
-    </div>
+    <div class="pull-right mr-3">
    </div> 
   </tbody>
  </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Curso;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -14,7 +14,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        //
+        $cursos = Curso::all();
+        return view('cursos.index', compact('cursos'));
     }
 
     /**
@@ -41,10 +42,10 @@ class CursoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Curso  $curso
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function show(Curso $curso)
+    public function show(cr $cr)
     {
         //
     }
@@ -52,10 +53,10 @@ class CursoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Curso  $curso
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Curso $curso)
+    public function edit(cr $cr)
     {
         //
     }
@@ -64,10 +65,10 @@ class CursoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Curso  $curso
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Curso $curso)
+    public function update(Request $request, cr $cr)
     {
         //
     }
@@ -75,10 +76,10 @@ class CursoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Curso  $curso
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curso $curso)
+    public function destroy(cr $cr)
     {
         //
     }
