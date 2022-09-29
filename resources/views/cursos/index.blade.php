@@ -1,5 +1,5 @@
-@include('app');
-@include('menu');
+@include('menu')
+@include('app')
 <div class="container">
 	@include('flash::message')
 	<h1>Lista de Cursos</h1>
@@ -15,11 +15,10 @@
 			<tr>
 				<th>Nombre</th>
 				<th>Descripcion</th>
-				<th>Fecha de Inicio</th>
-				<th>Fecha Fin</th>
+				<th>Fecha de inicio</th>
+				<th>Fecha fin</th>
 				<th>Estado</th>
-				<th>Opciones</th>
-								
+				<th>Opciones</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -31,19 +30,19 @@
 				<td>{{$a->fecha_fin}}</td>
 				<td>{{$a->estado}}</td>
 				
-			 	<td>
-			 		<div class="btn-group">
-			 		<a href="">
-			 		<input type="submit"  class="btn btn-warning" value="Editar">
-			 		</a>
-                	<form method="POST" action="">
-						@csrf
-			      		@method('DELETE')
-			      		<input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')" value="Borrar">
-			    	</form>
+			 <td>
+			 	<div class="btn-group">
+			 	<a href="">
+			 	<input type="submit"  class="btn btn-warning" value="Editar">
+			 	</a>
+                <form method="POST" action="">
+			      @csrf
+			      @method('DELETE')
+			      <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')" value="Borrar">
+			    </form>
                 
                 	<a href=""><input type="submit" class="btn btn-info" value="Ver"> </a>
-                	</div>
+                </div>
                 </td>
             </tr>
 			@endforeach

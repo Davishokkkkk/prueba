@@ -14,9 +14,9 @@ class CreateAlumnosTable extends Migration
     public function up()
     {
         Schema::create('alumnos', function (Blueprint $table) {
-           $table->id();
-           $table->unsignedBigInteger('cursos_id');
-           $table->foreign('cursos_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->id();
+            $table->unsignedBigInteger('cursos_id');
+            $table->foreign('cursos_id')->references('id')->on('cursos');
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('edad');
@@ -26,7 +26,7 @@ class CreateAlumnosTable extends Migration
             $table->string('gmail');
             $table->string('profesion');
             $table->string('genero');
-           $table->text('fechanac');
+            $table->text('fechanac');
             $table->timestamps();
         });
     }

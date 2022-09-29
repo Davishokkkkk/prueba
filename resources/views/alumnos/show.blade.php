@@ -1,4 +1,5 @@
 @include('app');
+@include('menu')
 <div class="container">
 	<div class="jumbotron">
    <div class="form-row align-items-center">

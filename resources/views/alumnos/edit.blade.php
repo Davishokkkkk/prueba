@@ -1,7 +1,8 @@
 @include('app');
+@include('menu')
 <div class="container">
 	<div class="jumbotron">
-   <div class="form-row align-items-center">
+   	<div class="form-row align-items-center">
     <div class="form-group col-md-12">
 	<h1>Editar alumno</h1>
 	<form action="{{url('/alumnos/'.$alumnos->id)}}" method="post" enctype="multipart/from-data">

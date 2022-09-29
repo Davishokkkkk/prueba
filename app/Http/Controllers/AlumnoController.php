@@ -47,15 +47,17 @@ class AlumnoController extends Controller
             'ci' => 'required |numeric', 
             'telefono' => 'required |max:10', 
             'direccion' => 'required',
-           'gmail' => 'required|unique:alumnos,gmail',
-           'profesion' => 'required',
-           'genero' => 'required',
-           'fechanac' => 'required'
+            'gmail' => 'required|unique:alumnos,gmail',
+            'profesion' => 'required',
+            'genero' => 'required',
+            'fechanac' => 'required',
+            'curso_id' => 'required'
         ];
             $mensaje =[
                 'required' =>'El :attributed es requerido',
                 'fechanac.required' => 'La fecha de nacimiento es requerido',
-                'telefono.required' => 'El numero de telefono es requerido'
+                'telefono.required' => 'El numero de telefono es requerido',
+                'curso_id.required' => 'El  curso es requerido'
             ];
 
             $this->validate($request,$rules,$mensaje);
@@ -96,10 +98,11 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $alumnos=request()->except(['_token','_method']);
         Alumno::where('id','=',$id)->update($alumnos);
+        Flash::success('Actualizado correctamente');
         return redirect ('alumnos');
     }
 
@@ -113,6 +116,7 @@ class AlumnoController extends Controller
     public function destroy($id)
     {
         Alumno::destroy($id);
+        Flash::error('Eliminado correctamente');
         return redirect('alumnos');
     }
 }
