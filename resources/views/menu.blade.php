@@ -6,17 +6,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('/alumnos')}}">Alumnos</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="{{url('/alumnos')}}">Alumnos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{url('/cursos')}}">Cursos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
     </div>

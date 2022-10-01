@@ -1,4 +1,3 @@
-
 @include('app')
 @include('menu')
 <div class="container">
@@ -49,6 +48,7 @@
 			@endforeach
 		</tbody>
 	</table>
+
    </div> 
   </tbody>
  </div>
