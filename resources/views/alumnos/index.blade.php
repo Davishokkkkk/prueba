@@ -38,6 +38,7 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
+				<td>{{$a->curso->nombre}}</td>
 			 <td>
 			 	<div class="btn-group">
 			 	<a href="{{url('/alumnos/'.$a->id.'/edit')}}">

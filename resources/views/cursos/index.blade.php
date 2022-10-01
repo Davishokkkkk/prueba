@@ -1,5 +1,6 @@
-@include('menu')
+
 @include('app')
+@include('menu')
 <div class="container">
 	@include('flash::message')
 	<h1>Lista de Cursos</h1>
