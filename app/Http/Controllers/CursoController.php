@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Flash;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -12,10 +12,11 @@ class CursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( request $request)
     {
-        $cursos = Curso::all();
-        return view('cursos.index',compact('cursos'));
+        $nombre = $request->get('buscarpor');
+        $cursos = Curso::where('nombre','like',"%$nombre%")->paginate(4);
+        return view('cursos.index',compact('cursos'));   
     }
 
     /**
@@ -25,7 +26,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        //
+        return view('cursos.create');
     }
 
     /**
@@ -36,7 +37,10 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cursos= request()->except('_token');
+        Curso::insert($cursos);
+        Flash::success('Creado correctamente');
+        return redirect (route('cursos.index'));
     }
 
     /**
@@ -56,9 +60,10 @@ class CursoController extends Controller
      * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function edit(cr $cr)
+    public function edit( $id)
     {
-        //
+        $cursos=Curso::findorFail($id);
+        return view ('cursos.edit', compact('cursos'));
     }
 
     /**
@@ -68,9 +73,12 @@ class CursoController extends Controller
      * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cr $cr)
+    public function update(Request $request,  $id)
     {
-        //
+        $cursos=request()->except(['_token','_method']);
+        Curso::where('id','=',$id)->update($cursos);
+        Flash::success('Actualizado correctamente');
+        return redirect ('cursos');
     }
 
     /**
@@ -79,8 +87,10 @@ class CursoController extends Controller
      * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cr $cr)
+    public function destroy( $id)
     {
-        //
+        Curso::destroy($id);
+        Flash::error('Eliminado correctamente');
+        return redirect('cursos');
     }
 }

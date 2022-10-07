@@ -1,6 +1,7 @@
 @include('app')
 @include('menu')
 <div class="container">
+	
 	<h1>Lista de Alumnos</h1>
 	<a class="btn pull-righ" href="{{route('alumnos.create')}} "><button type="button" class="btn btn-primary">Nuevo</button></a>
 		<form class="form-inline my-2 my-lg-0 float-right">
@@ -8,6 +9,11 @@
               <button class="btn btn-success" type="submit">Buscar</button>
               </form>
               <br>
+	<style>
+    .table-responsive-sm{
+        background-color: #EBEBEB;
+    }
+    </style>
 <div class="table-responsive-sm">
 	<table class="table table-hover" id="tabla">
 		<thead>
@@ -22,6 +28,7 @@
 				<th>Profesion</th>
 				<th>Genero</th>
 				<th>Fecha de nacimineto</th>
+				<th>Cursos</th>
 				<th>Opciones</th>				
 			</tr>
 		</thead>
@@ -38,7 +45,7 @@
 				<td>{{$a->profesion}}</td>
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
-				<td>{{$a->curso->nombre}}</td>
+				<td>{{$a->cursos->nombre}}</td>
 			 <td>
 			 	<div class="btn-group">
 			 	<a href="{{url('/alumnos/'.$a->id.'/edit')}}">
