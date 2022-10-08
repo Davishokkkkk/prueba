@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Flash;
+
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -39,7 +39,7 @@ class CursoController extends Controller
     {
         $cursos= request()->except('_token');
         Curso::insert($cursos);
-        Flash::success('Creado correctamente');
+        
         return redirect (route('cursos.index'));
     }
 
@@ -77,7 +77,7 @@ class CursoController extends Controller
     {
         $cursos=request()->except(['_token','_method']);
         Curso::where('id','=',$id)->update($cursos);
-        Flash::success('Actualizado correctamente');
+       
         return redirect ('cursos');
     }
 
@@ -90,7 +90,6 @@ class CursoController extends Controller
     public function destroy( $id)
     {
         Curso::destroy($id);
-        Flash::error('Eliminado correctamente');
         return redirect('cursos');
     }
 }
