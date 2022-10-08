@@ -1,6 +1,6 @@
 @include('app')
 @include('menu')
-@include('flash-message')
+
 	@if (count($errors)>0)
 <div class="alert alert-danger" role="aler">
 	<u>
