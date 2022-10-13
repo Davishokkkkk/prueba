@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use Illuminate\Http\Request;
-
+use Flash;
 class CursoController extends Controller
 {
     /**
@@ -16,7 +16,8 @@ class CursoController extends Controller
     {
         $nombre = $request->get('buscarpor');
         $cursos = Curso::where('nombre','like',"%$nombre%")->paginate(4);
-        return view('cursos.index',compact('cursos'));   
+       return view('cursos.index',compact(
+        'cursos'));   
     }
 
     /**
@@ -39,7 +40,7 @@ class CursoController extends Controller
     {
         $cursos= request()->except('_token');
         Curso::insert($cursos);
-        
+        Flash::success('Creado correctamente');
         return redirect (route('cursos.index'));
     }
 
@@ -75,9 +76,9 @@ class CursoController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        $cursos=request()->except(['_token','_method']);
-        Curso::where('id','=',$id)->update($cursos);
-       
+      $cursos=request()->except(['_token','_method']);
+      Curso::where('id','=',$id)->update($cursos);
+       Flash::success('Actualizado correctamente');
         return redirect ('cursos');
     }
 
@@ -90,6 +91,7 @@ class CursoController extends Controller
     public function destroy( $id)
     {
         Curso::destroy($id);
+        Flash::error('Eliminado correctamente');
         return redirect('cursos');
     }
 }

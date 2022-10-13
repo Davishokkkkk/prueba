@@ -9,15 +9,12 @@
               <button class="btn btn-success" type="submit">Buscar</button>
               </form>
               <br>
-	<style>
-    .table-responsive-sm{
-        background-color: #EBEBEB;
-    }
-    </style>
+	
 <div class="table-responsive-sm">
 	<table class="table table-hover" id="tabla">
 		<thead>
 			<tr>
+				
 				<th>Nombre</th>
 				<th>Apellido</th>
 				<th>Edad</th>
@@ -29,12 +26,15 @@
 				<th>Genero</th>
 				<th>Fecha de nacimineto</th>
 				<th>Cursos</th>
-				<th>Opciones</th>				
+				<th>ID</th>
+				<th>Opciones</th>
+
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($alumnos as $a)
 			<tr>
+				
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->apellido}}</td>
 				<td>{{$a->edad}}</td>
@@ -46,6 +46,7 @@
 				<td>{{$a->genero}}</td>
 				<td>{{$a->fechanac}}</td>
 				<td>{{$a->cursos->nombre}}</td>
+				<td>{{$a->cursos->curso_id}}</td>
 			 <td>
 			 	<div class="btn-group">
 			 	<a href="{{url('/alumnos/'.$a->id.'/edit')}}">

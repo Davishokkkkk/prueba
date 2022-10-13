@@ -1,5 +1,6 @@
 @include('app')
 @include('menu')
+
 <div class="container">
 	
 	<h1>Lista de Cursos</h1>
@@ -9,11 +10,7 @@
               <button class="btn btn-success" type="submit">Buscar</button>
               </form>
               <br>
-	<style>
-    .table-responsive-sm{
-        background-color: #EBEBEB;
-    }
-    </style>
+
 <div class="table-responsive-sm" >
 	<table class="table table-hover" id="tabla">
 		<thead>
